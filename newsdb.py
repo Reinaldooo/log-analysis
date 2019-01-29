@@ -1,25 +1,17 @@
-# "Database code" for the DB Forum.
-
 import psycopg2
-import bleach
 
 DBNAME = "news"
 
-def get_posts():
-  """Return all posts from the 'database', most recent first."""
+def top_three_articles():
+  """Displays TOP 3 articles sorted by number of views"""
   db = psycopg2.connect(database=DBNAME)
   c = db.cursor()
-  c.execute("select content, time from posts order by time desc")
-  posts = c.fetchall()
+  c.execute("""
+  select title, hits from articles, pathHits
+  where articles.slug = replace(pathHits.path, '/article/', '') limit 3;
+  """)
+  result = c.fetchall()
+  print("TOP 3 most viewed articles of all time: \n")
+  for item in result:
+    print("Title: %s - Views: %s" %(item[0],item[1],))
   db.close()
-  return posts
-
-def add_post(content):
-  """Add a post to the 'database' with the current timestamp."""
-  db = psycopg2.connect(database=DBNAME)
-  c = db.cursor()
-  c.execute("insert into posts values (%s)", (bleach.clean(content),))
-  db.commit()
-  db.close()
-
-
