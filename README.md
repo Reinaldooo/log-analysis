@@ -9,7 +9,9 @@ This tool uses Python version 3 to analise the PostgreSQL database of an newspap
   <dd>Days where site requests failed more than 1% of the time</dd>
 </dl>
 
-![Example PNG](/Example.png)
+<p align="center">
+  <img src="/Example.png">
+</p>
 
 [psycopg2](http://initd.org/psycopg/) is used to easily connect Python and PostgreSQL.
 
