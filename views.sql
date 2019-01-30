@@ -21,16 +21,6 @@ CREATE VIEW req_total AS
   ORDER BY total Desc;
 
 CREATE VIEW date_reqs AS
-  SELECT req_total.date,
-  req_total.total AS req_ok,
-  req_errors.total AS req_err,
-  round(( req_errors.total::decimal / req_total.total ) * 100) AS percentage
-  FROM req_total, req_errors
-  WHERE req_total.date = req_errors.date
-  ORDER BY req_ok DESC;
-
-CREATE VIEW date_reqs AS
---Same View as above, but using a more concise logic
   SELECT time::date AS date,
     100 * (COUNT(*) FILTER (WHERE status = '404 NOT FOUND') /
         COUNT(*)::numeric) AS error_percent
