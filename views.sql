@@ -9,17 +9,6 @@ CREATE VIEW authors_table AS
     SELECT articles.slug, authors.name FROM articles, authors 
     WHERE authors.id = articles.author;
 
-CREATE VIEW req_errors AS
-  SELECT time::date AS date, count(*) AS total FROM log
-    WHERE status != '200 OK'
-    GROUP BY log.time::date
-    ORDER BY total Desc;
-
-CREATE VIEW req_total AS
-  SELECT time::date AS date, count(*) AS total FROM log
-  GROUP BY log.time::date
-  ORDER BY total Desc;
-
 CREATE VIEW date_reqs AS
   SELECT time::date AS date,
     100 * (COUNT(*) FILTER (WHERE status = '404 NOT FOUND') /
