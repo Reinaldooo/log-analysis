@@ -2,6 +2,7 @@ import psycopg2
 
 DBNAME = "news"
 
+
 def top_three_articles():
   """Displays TOP 3 articles sorted by number of views"""
   db = psycopg2.connect(database=DBNAME)
@@ -14,10 +15,11 @@ def top_three_articles():
   list_item = 1
   print("Top 3 most viewed articles of all time: \n")
   for item in result:
-    print("%s - Title: %s" %(list_item, item[0],))
-    print("Views: %s" %(item[1],))
+    print("%s - Title: %s" % (list_item, item[0], ))
+    print("Views: %s" % (item[1], ))
     list_item += 1
   db.close()
+
 
 def top_authors():
   """Displays top authors based on the sum of views in their articles"""
@@ -34,9 +36,10 @@ def top_authors():
   list_item = 1
   print("Top authors based on overall views: \n")
   for item in result:
-    print("%s - Name: %s - Views: %s" %(list_item, item[0],item[1],))
+    print("%s - Name: %s - Views: %s" % (list_item, item[0], item[1], ))
     list_item += 1
   db.close()
+
 
 def top_failed_requests():
   """Displays dates where more than 1% of requests failed"""
@@ -49,6 +52,10 @@ def top_failed_requests():
   list_item = 1
   print("Dates where more than 1% of requests failed: \n")
   for item in result:
-    print("%s - Date: %s - Failed Percentage: %s" %(list_item, item[0],item[1],))
+    print("%s - Date: %s - Failed Percentage: %s" % (
+      list_item,
+      item[0],
+      item[1],
+    ))
     list_item += 1
   db.close()
