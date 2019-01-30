@@ -1,0 +1,24 @@
+NEWS REPORT TOOL
+
+
+Top 3 most viewed articles of all time:
+
+1 - Title: Candidate is jerk, alleges rival
+Views: 338647
+2 - Title: Bears love berries, alleges bear
+Views: 253801
+3 - Title: Bad things gone, say good people
+Views: 170098
+
+
+Top authors based on overall views:
+
+1 - Name: Ursula La Multa - Views: 507594
+2 - Name: Rudolf von Treppenwitz - Views: 423457
+3 - Name: Anonymous Contributor - Views: 170098
+4 - Name: Markoff Chaney - Views: 84557
+
+
+Dates where more than 1% of requests failed:
+
+1 - Date: 2016-07-17 - Failed Percentage: 2
